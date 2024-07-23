@@ -9,13 +9,13 @@ class Block {
     this.data = data;
   }
   static genesis() {
-    return new this(GENESIS_DATA);
+    return new Block(GENESIS_DATA);
   }
   static mineBlock({ lastBlock, data }) {
     const timestamp = Date.now();
     const lastHash = lastBlock.hash;
 
-    return new this({
+    return new Block({
       timestamp,
       lastHash,
       data,
