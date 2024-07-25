@@ -27,7 +27,7 @@ describe("Blockchain", () => {
     describe("when the chain does not start with the genesis block", () => {
       it("returns false", () => {
         blockchain.chain[0] = { data: "fake-genesis" };
-        expect(blockchain.isValidChain(blockchain.chain)).toBe(false);
+        expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
       });
     });
 
@@ -37,7 +37,6 @@ describe("Blockchain", () => {
         blockchain.addBlock({ data: "Beets" });
         blockchain.addBlock({ data: "Battlestar Galactica" });
       });
-      ("");
       describe("and a lastHash reference has changed", () => {
         it("returns false", () => {
           blockchain.chain[2].lastHash = "broken-lastHash";
@@ -56,10 +55,6 @@ describe("Blockchain", () => {
 
       describe("and the chain does not contain any invalid blocks", () => {
         it("returns true", () => {
-          blockchain.addBlock({ data: "Bears" });
-          blockchain.addBlock({ data: "Beets" });
-          blockchain.addBlock({ data: "Battlestar Galactica" });
-
           expect(Blockchain.isValidChain(blockchain.chain)).toBe(true);
         });
       });
